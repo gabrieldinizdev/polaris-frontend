@@ -54,6 +54,11 @@ function AppProviders({ children }: AppProvidersProps) {
               :root > * {
                 user-select: none;
               }
+
+              a {
+                text-decoration: none;
+                color: inherit;
+              }
             `,
           },
           MuiToolbar: {
