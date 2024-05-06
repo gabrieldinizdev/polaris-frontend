@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-import { Image as ImageIcon } from "@phosphor-icons/react";
+import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr";
 
 import type { ProductSchema } from "@/schemas/product";
 

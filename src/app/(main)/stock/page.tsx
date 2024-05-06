@@ -1,4 +1,4 @@
-import { Stock } from "@/components/stock";
+import dynamic from "next/dynamic";
 
 import { CardPage } from "./_components/card-page";
 
@@ -145,7 +145,11 @@ const ITEMS = [
   },
 ] as any;
 
-export default function StockPage() {
+const Stock = dynamic(() =>
+  import("@/components/stock").then((mod) => mod.Stock)
+);
+
+export default async function StockPage() {
   return (
     <CardPage>
       <Stock items={ITEMS} />

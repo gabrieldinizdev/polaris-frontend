@@ -2,7 +2,7 @@
 
 import { Box, lighten, styled } from "@mui/material";
 
-export const StyledShelf = styled(Box)(({ theme }) => ({
+export const StyledSkeletonShelf = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: theme.spacing(0),
   width: "100%",
@@ -32,7 +32,7 @@ export const StyledShelf = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledShelfContainer = styled(Box)(() => ({
+export const StyledSkeletonShelfContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   flexGrow: 1,

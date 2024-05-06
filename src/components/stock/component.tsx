@@ -1,17 +1,3 @@
-"use client";
-
-import {
-  Badge,
-  Box,
-  Button,
-  Paper,
-  Skeleton,
-  Typography,
-  lighten,
-} from "@mui/material";
-
-import { Image as ImageIcon } from "@phosphor-icons/react";
-
 import type { ProductSchema } from "@/schemas/product";
 import type { StockItemSchema } from "@/schemas/stock-item";
 
@@ -22,15 +8,14 @@ import { StyledShelf, StyledShelfContainer } from "./styled";
 
 type StockProps = {
   items: StockItemSchema[];
-  loading?: boolean;
 };
 
-export const Stock = ({ items, loading = true }: StockProps) => {
+export const Stock = ({ items }: StockProps) => {
   return (
     <>
       <StyledShelfContainer>
         <StyledShelf>
-          {items.length === 0 && !loading && <EmptyStock />}
+          {items.length === 0 && <EmptyStock />}
 
           {items.map((item) => {
             const product = item.product as ProductSchema;
