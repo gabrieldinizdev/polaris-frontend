@@ -1,11 +1,5 @@
-import { SwitchTheme } from "@/components/switch-theme";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main>
-      <h1>Home</h1>
-
-      <SwitchTheme />
-    </main>
-  );
+export default function HomePage() {
+  return redirect("/stock");
 }

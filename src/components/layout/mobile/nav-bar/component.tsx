@@ -1,75 +1,56 @@
 "use client";
 
-import { useState, MouseEvent } from "react";
+import Link from "next/link";
+import { MouseEvent, useState } from "react";
 
-import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 
-import { ListChecks, Package } from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
 
-export const MobileNavBar = () => {
-  const [alignment, setAlignment] = useState<string | null>("left");
+import { StyledToggleButton, StyledToggleButtonGroup } from "./styled";
 
-  const handleAlignment = (
+type MobileNavBarProps = {
+  paths: { title: string; url: string; icon: Icon }[];
+  defaultPath?: string;
+};
+
+export const MobileNavBar = ({
+  paths,
+  defaultPath = "/",
+}: MobileNavBarProps) => {
+  const [navigation, setNavigation] = useState<string>(defaultPath);
+
+  const handleNavigation = (
     _: MouseEvent<HTMLElement>,
-    newAlignment: string | null
+    newNavigation: string | null
   ) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
-    }
+    if (newNavigation !== null) setNavigation(newNavigation);
   };
 
   return (
-    <ToggleButtonGroup
-      value={alignment}
+    <StyledToggleButtonGroup
+      aria-label="navigation bar"
+      onChange={handleNavigation}
+      value={navigation}
       exclusive
-      onChange={handleAlignment}
-      aria-label="text alignment"
-      sx={{
-        width: "100%",
-        height: "100%",
-        py: (theme) => theme.spacing(2),
-        justifyContent: "center",
-        ".MuiButtonGroup-grouped:not(:last-of-type)": {
-          borderColor: "#FFFFFF",
-        },
-      }}
+      fullWidth
     >
-      <Tooltip title="Estoque" arrow>
-        <ToggleButton
-          sx={{
-            flexGrow: 1,
-            "&.Mui-selected, &.Mui-selected:hover": {
-              color: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.16)",
-            },
-            color: "white",
-            borderColor: "rgba(255, 255, 255, 0.20)",
-          }}
-          value="stock"
-          aria-label="stock"
-        >
-          <Package size={32} />
-        </ToggleButton>
-      </Tooltip>
-
-      <Tooltip title="Lista de Compras" arrow>
-        <ToggleButton
-          color="standard"
-          sx={{
-            flexGrow: 1,
-            "&.Mui-selected, &.Mui-selected:hover": {
-              color: "white",
-              backgroundColor: "rgba(255, 255, 255, 0.16)",
-            },
-            color: "white",
-            borderColor: "rgba(255, 255, 255, 0.20)",
-          }}
-          value="list"
-          aria-label="shopping list"
-        >
-          <ListChecks size={32} />
-        </ToggleButton>
-      </Tooltip>
-    </ToggleButtonGroup>
+      {paths.map(({ title, url, icon: Icon }) => (
+        <Tooltip key={url} title={title} arrow>
+          <Link
+            href={url}
+            style={{
+              display: "flex",
+              flexGrow: 1,
+              padding: 0,
+            }}
+          >
+            <StyledToggleButton value={url} aria-label={title}>
+              <Icon size={32} />
+            </StyledToggleButton>
+          </Link>
+        </Tooltip>
+      ))}
+    </StyledToggleButtonGroup>
   );
 };
