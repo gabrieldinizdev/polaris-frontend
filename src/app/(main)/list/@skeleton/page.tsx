@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-export default async function Worry() {
+export default async function ButtonSkeleton() {
   return (
     <Button
       variant="contained"
