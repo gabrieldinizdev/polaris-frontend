@@ -22,11 +22,7 @@ export const Stock = ({ items }: StockProps) => {
             const quantity = item.quantity;
 
             return (
-              <StockBox
-                key={product._id}
-                product={product}
-                quantity={quantity}
-              />
+              <StockBox key={item._id} product={product} quantity={quantity} />
             );
           })}
         </StyledShelf>

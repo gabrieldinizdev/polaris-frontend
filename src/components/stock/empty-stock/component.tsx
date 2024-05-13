@@ -11,13 +11,14 @@ export const EmptyStock = () => {
       display="flex"
       flexDirection="column"
       justifyContent="center"
+      alignItems="center"
     >
       <Lottie
         loop
         animationData={animationEmptyState}
         play
         speed={0.25}
-        style={{ width: "100%" }}
+        style={{ width: "100%", maxWidth: "300px" }}
       />
 
       <Typography variant="body2" textAlign="center">
