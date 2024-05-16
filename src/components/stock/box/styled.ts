@@ -15,4 +15,10 @@ export const StyledBadge = styled(Badge)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   gap: theme.spacing(1),
+
+  "& .MuiBadge-badge": {
+    padding: theme.spacing(1),
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+  },
 }));

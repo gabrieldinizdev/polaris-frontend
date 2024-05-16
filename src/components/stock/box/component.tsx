@@ -14,7 +14,7 @@ type StockBoxProps = {
 export const StockBox = ({ product, quantity }: StockBoxProps) => {
   return (
     <StyledPaper variant="elevation" elevation={4}>
-      <StyledBadge badgeContent={quantity} color="secondary">
+      <StyledBadge showZero badgeContent={quantity} color="secondary">
         <ImageIcon size={64} weight="light" />
 
         <Typography variant="body2">{product.name}</Typography>
